@@ -14,6 +14,7 @@
 		942247CA213D2C9800298F2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 942247C8213D2C9800298F2D /* LaunchScreen.storyboard */; };
 		942247D5213D2C9800298F2D /* realmDatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942247D4213D2C9800298F2D /* realmDatabaseTests.swift */; };
 		942247E0213D2C9800298F2D /* realmDatabaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942247DF213D2C9800298F2D /* realmDatabaseUITests.swift */; };
+		942247F5213D351500298F2D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942247F4213D351500298F2D /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		942247DB213D2C9800298F2D /* realmDatabaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = realmDatabaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		942247DF213D2C9800298F2D /* realmDatabaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = realmDatabaseUITests.swift; sourceTree = "<group>"; };
 		942247E1213D2C9800298F2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		942247F4213D351500298F2D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../../../../../../.ssh/Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		942247BE213D2C9700298F2D /* realmDatabase */ = {
 			isa = PBXGroup;
 			children = (
+				942247F3213D350200298F2D /* Constant */,
 				942247BF213D2C9700298F2D /* AppDelegate.swift */,
 				942247C1213D2C9700298F2D /* ViewController.swift */,
 				942247C3213D2C9700298F2D /* Main.storyboard */,
@@ -123,6 +126,14 @@
 				942247E1213D2C9800298F2D /* Info.plist */,
 			);
 			path = realmDatabaseUITests;
+			sourceTree = "<group>";
+		};
+		942247F3213D350200298F2D /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				942247F4213D351500298F2D /* Constants.swift */,
+			);
+			path = Constant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +269,7 @@
 			files = (
 				942247C2213D2C9700298F2D /* ViewController.swift in Sources */,
 				942247C0213D2C9700298F2D /* AppDelegate.swift in Sources */,
+				942247F5213D351500298F2D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
