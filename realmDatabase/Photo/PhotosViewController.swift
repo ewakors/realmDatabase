@@ -19,12 +19,14 @@ class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Image controller"
-        
+        view.backgroundColor = UIColor.white
         view.addSubview(tableView)
         tableView.frame = self.view.frame
         self.tableView.delegate = self
         self.tableView.dataSource = self
         tableView.register(PhotoTableViewCell.self, forCellReuseIdentifier: "photoCell")
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonDidClick))
         
         self.photos = realm.objects(Photo.self).sorted(byKeyPath: "imageName", ascending: false)
         
@@ -61,10 +63,13 @@ class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        view.backgroundColor = UIColor.white
-
         print("Photos: \(String(describing: photos))")
-        
+    }
+    
+    @objc func addButtonDidClick() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "addPhotoVC") as! AddNewPhotoViewController
+        self.navigationController?.pushViewController(newViewController, animated: true)
     }
 }
 

@@ -23,6 +23,7 @@
 		9470C0CD213E7C0900F7B52E /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9470C0CC213E7C0900F7B52E /* Stopwatch.swift */; };
 		9470C0D0213E9E4700F7B52E /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9470C0CE213E9E4700F7B52E /* PhotoTableViewCell.swift */; };
 		9470C0D1213E9E4700F7B52E /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9470C0CF213E9E4700F7B52E /* PhotoTableViewCell.xib */; };
+		9470C0D3213EB33800F7B52E /* AddNewPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9470C0D2213EB33800F7B52E /* AddNewPhotoViewController.swift */; };
 		B2AD50776A39874088580EF3 /* Pods_realmDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD6B0DE6A5A163046DB21172 /* Pods_realmDatabase.framework */; };
 		EC77BAAEE6DC64DEE2304ADC /* Pods_realmDatabaseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45D44EDA805A2654A4854A99 /* Pods_realmDatabaseUITests.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 		9470C0CC213E7C0900F7B52E /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 		9470C0CE213E9E4700F7B52E /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		9470C0CF213E9E4700F7B52E /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
+		9470C0D2213EB33800F7B52E /* AddNewPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPhotoViewController.swift; sourceTree = "<group>"; };
 		994F0E2A2149342843E1DEC4 /* Pods-realmDatabaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realmDatabaseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-realmDatabaseTests/Pods-realmDatabaseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F4B309D6ADC3B20D2A2637BF /* Pods_realmDatabaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_realmDatabaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD6B0DE6A5A163046DB21172 /* Pods_realmDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_realmDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +201,7 @@
 				942247FE213D61C900298F2D /* PhotosViewController.swift */,
 				9470C0CE213E9E4700F7B52E /* PhotoTableViewCell.swift */,
 				9470C0CF213E9E4700F7B52E /* PhotoTableViewCell.xib */,
+				9470C0D2213EB33800F7B52E /* AddNewPhotoViewController.swift */,
 			);
 			path = Photo;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				942247C2213D2C9700298F2D /* ViewController.swift in Sources */,
 				942247FF213D61C900298F2D /* PhotosViewController.swift in Sources */,
 				9470C0D0213E9E4700F7B52E /* PhotoTableViewCell.swift in Sources */,
+				9470C0D3213EB33800F7B52E /* AddNewPhotoViewController.swift in Sources */,
 				942247C0213D2C9700298F2D /* AppDelegate.swift in Sources */,
 				942247F5213D351500298F2D /* Constants.swift in Sources */,
 				9470C0CD213E7C0900F7B52E /* Stopwatch.swift in Sources */,
