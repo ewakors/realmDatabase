@@ -17,7 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        Realm.Configuration.defaultConfiguration = Realm.Configuration()
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            syncConfiguration: SyncConfiguration(user: SyncUser.current!, realmURL:Constants.REALM_URL ),
+            objectTypes:[Item.self, Photo.self])
         return true
     }
 

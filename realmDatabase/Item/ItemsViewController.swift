@@ -11,25 +11,12 @@ import RealmSwift
 
 class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource {
     
-    var realm: Realm
-    var items: Results<Item>
-    var notificationToken: NotificationToken?
-    let s : Stopwatch?
+    var realm: Realm = try! Realm()
+    var items: Results<Item>?
+    var notificationToken: NotificationToken? = nil
+    let s : Stopwatch? = Stopwatch()
     
     var tableView = UITableView()
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        
-        let syncConfig = SyncConfiguration(user: SyncUser.current!, realmURL: Constants.REALM_URL)
-        self.realm = try! Realm(configuration: Realm.Configuration(syncConfiguration: syncConfig, objectTypes:[Item.self]))
-        self.items = realm.objects(Item.self).sorted(byKeyPath: "timestamp", ascending: false)
-        s = Stopwatch()
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +30,9 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonDidClick))
         navigationItem.rightBarButtonItems = [UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(logoutButtonDidClick)),UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(photoButtonDidClick)) ]
         
-        notificationToken = items.observe { [weak self] (changes) in
+        self.items = realm.objects(Item.self).sorted(byKeyPath: "timestamp", ascending: false)
+        
+        notificationToken = items?.observe { [weak self] (changes) in
             guard let tableView = self?.tableView else { return }
             switch changes {
             case .initial:
@@ -102,31 +91,8 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
     @objc func photoButtonDidClick(){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "photoVC") as! PhotosViewController
-        if let _ = SyncUser.current {
-            self.navigationController?.pushViewController(PhotosViewController(), animated: true)
-            //        self.navigationController?.pushViewController(newViewController, animated: true)
-        } else {
-            let alertController = UIAlertController(title: "Login to Realm Cloud", message: "Supply a nice nickname!", preferredStyle: .alert)
-            
-            alertController.addAction(UIAlertAction(title: "Login", style: .default, handler: { [unowned self]
-                alert -> Void in
-                let textField = alertController.textFields![0] as UITextField
-                let creds = SyncCredentials.nickname(textField.text!, isAdmin: true)
-                
-                SyncUser.logIn(with: creds, server: Constants.AUTH_URL, onCompletion: { [weak self](user, err) in
-                    if let _ = user {
-                        self?.navigationController?.pushViewController(PhotosViewController(), animated: true)
-                    } else if let error = err {
-                        fatalError(error.localizedDescription)
-                    }
-                })
-            }))
-            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            alertController.addTextField(configurationHandler: {(textField : UITextField!) -> Void in
-                textField.placeholder = "A Name for your user"
-            })
-            self.present(alertController, animated: true, completion: nil)
-        }
+        self.navigationController?.pushViewController(newViewController, animated: true)
+        
     }
     
     @objc func logoutButtonDidClick() {
@@ -145,18 +111,18 @@ extension ItemsViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") ?? UITableViewCell(style: .default, reuseIdentifier: "Cell")
         cell.selectionStyle = .none
-        let item = items[indexPath.row]
+        let item = items![indexPath.row]
         cell.textLabel?.text = item.textString
         cell.accessoryType = item.isDone ? UITableViewCellAccessoryType.checkmark : UITableViewCellAccessoryType.none
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return items!.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = items[indexPath.row]
+        let item = items![indexPath.row]
         try! realm.write {
             item.isDone = !item.isDone
         }
@@ -164,7 +130,7 @@ extension ItemsViewController {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
-        let item = items[indexPath.row]
+        let item = items![indexPath.row]
         try! realm.write {
             realm.delete(item)
         }
