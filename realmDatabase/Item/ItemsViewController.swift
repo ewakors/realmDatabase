@@ -14,6 +14,7 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
     var realm: Realm
     var items: Results<Item>
     var notificationToken: NotificationToken?
+    let s : Stopwatch?
     
     var tableView = UITableView()
     
@@ -22,6 +23,7 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
         let syncConfig = SyncConfiguration(user: SyncUser.current!, realmURL: Constants.REALM_URL)
         self.realm = try! Realm(configuration: Realm.Configuration(syncConfiguration: syncConfig, objectTypes:[Item.self]))
         self.items = realm.objects(Item.self).sorted(byKeyPath: "timestamp", ascending: false)
+        s = Stopwatch()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -39,7 +41,7 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
         self.tableView.dataSource = self
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonDidClick))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(rightBarButtonDidClick))
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(logoutButtonDidClick)),UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(photoButtonDidClick)) ]
         
         notificationToken = items.observe { [weak self] (changes) in
             guard let tableView = self?.tableView else { return }
@@ -47,6 +49,7 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
             case .initial:
                 // Results are now populated and can be accessed without blocking the UI
                 tableView.reloadData()
+                print("Initial database: \(String(describing: self?.s?.elapsedTimeString()))")
             case .update(_, let deletions, let insertions, let modifications):
                 // Query results have changed, so apply them to the UITableView
                 tableView.beginUpdates()
@@ -96,7 +99,13 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
         self.present(alertController, animated: true, completion: nil)
     }
     
-    @objc func rightBarButtonDidClick() {
+    @objc func photoButtonDidClick(){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "photoVC") as! PhotosViewController
+        self.navigationController?.pushViewController(newViewController, animated: true)
+    }
+    
+    @objc func logoutButtonDidClick() {
         let alertController = UIAlertController(title: "Logout", message: "", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Yes, Logout", style: .destructive, handler: {
             alert -> Void in
@@ -106,7 +115,9 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
-    
+}
+
+extension ItemsViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") ?? UITableViewCell(style: .default, reuseIdentifier: "Cell")
         cell.selectionStyle = .none
@@ -135,3 +146,4 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
         }
     }
 }
+

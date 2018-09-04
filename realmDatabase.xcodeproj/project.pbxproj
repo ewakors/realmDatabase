@@ -18,6 +18,9 @@
 		942247F5213D351500298F2D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942247F4213D351500298F2D /* Constants.swift */; };
 		942247F8213D35DE00298F2D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942247F7213D35DE00298F2D /* Item.swift */; };
 		942247FA213D38FB00298F2D /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942247F9213D38FB00298F2D /* ItemsViewController.swift */; };
+		942247FD213D61B700298F2D /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942247FC213D61B700298F2D /* Photo.swift */; };
+		942247FF213D61C900298F2D /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942247FE213D61C900298F2D /* PhotosViewController.swift */; };
+		9470C0CD213E7C0900F7B52E /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9470C0CC213E7C0900F7B52E /* Stopwatch.swift */; };
 		B2AD50776A39874088580EF3 /* Pods_realmDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD6B0DE6A5A163046DB21172 /* Pods_realmDatabase.framework */; };
 		EC77BAAEE6DC64DEE2304ADC /* Pods_realmDatabaseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45D44EDA805A2654A4854A99 /* Pods_realmDatabaseUITests.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +65,9 @@
 		942247F4213D351500298F2D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../../../../../../.ssh/Constants.swift; sourceTree = "<group>"; };
 		942247F7213D35DE00298F2D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../../../../../../.ssh/Item.swift; sourceTree = "<group>"; };
 		942247F9213D38FB00298F2D /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
+		942247FC213D61B700298F2D /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		942247FE213D61C900298F2D /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		9470C0CC213E7C0900F7B52E /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 		994F0E2A2149342843E1DEC4 /* Pods-realmDatabaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realmDatabaseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-realmDatabaseTests/Pods-realmDatabaseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F4B309D6ADC3B20D2A2637BF /* Pods_realmDatabaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_realmDatabaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD6B0DE6A5A163046DB21172 /* Pods_realmDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_realmDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +139,8 @@
 		942247BE213D2C9700298F2D /* realmDatabase */ = {
 			isa = PBXGroup;
 			children = (
+				9470C0CB213E7BEC00F7B52E /* Timer */,
+				942247FB213D619F00298F2D /* Picture */,
 				942247F6213D35D100298F2D /* Item */,
 				942247F3213D350200298F2D /* Constant */,
 				942247BF213D2C9700298F2D /* AppDelegate.swift */,
@@ -178,6 +186,23 @@
 				942247F9213D38FB00298F2D /* ItemsViewController.swift */,
 			);
 			path = Item;
+			sourceTree = "<group>";
+		};
+		942247FB213D619F00298F2D /* Picture */ = {
+			isa = PBXGroup;
+			children = (
+				942247FC213D61B700298F2D /* Photo.swift */,
+				942247FE213D61C900298F2D /* PhotosViewController.swift */,
+			);
+			path = Picture;
+			sourceTree = "<group>";
+		};
+		9470C0CB213E7BEC00F7B52E /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				9470C0CC213E7C0900F7B52E /* Stopwatch.swift */,
+			);
+			path = Timer;
 			sourceTree = "<group>";
 		};
 		E5A9CB3AB142007C925E34E6 /* Frameworks */ = {
@@ -402,11 +427,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				942247FD213D61B700298F2D /* Photo.swift in Sources */,
 				942247FA213D38FB00298F2D /* ItemsViewController.swift in Sources */,
 				942247F8213D35DE00298F2D /* Item.swift in Sources */,
 				942247C2213D2C9700298F2D /* ViewController.swift in Sources */,
+				942247FF213D61C900298F2D /* PhotosViewController.swift in Sources */,
 				942247C0213D2C9700298F2D /* AppDelegate.swift in Sources */,
 				942247F5213D351500298F2D /* Constants.swift in Sources */,
+				9470C0CD213E7C0900F7B52E /* Stopwatch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

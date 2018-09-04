@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,11 +37,60 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="UD5-a3-KUF"/>
                     </view>
-                    <navigationItem key="navigationItem" id="deQ-Qu-9aE"/>
+                    <navigationItem key="navigationItem" id="deQ-Qu-9aE">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="aF2-XM-Osw">
+                            <connections>
+                                <action selector="addButtonDidClick:" destination="jzZ-Dl-Mkc" id="2uN-Zn-NrW"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Logout" id="Rvo-xr-6f7">
+                                <connections>
+                                    <action selector="logoutButtonDidClick:" destination="jzZ-Dl-Mkc" id="rEb-rS-gYp"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Photo" id="JkT-uw-94S">
+                                <connections>
+                                    <action selector="photoButtonDidClick:" destination="jzZ-Dl-Mkc" id="BUh-XO-jbE"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17K-AQ-v5E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2695.1999999999998" y="117.39130434782609"/>
+        </scene>
+        <!--Photos View Controller-->
+        <scene sceneID="Ooi-af-Wrf">
+            <objects>
+                <viewController storyboardIdentifier="photoVC" id="gbY-q1-3zQ" customClass="PhotosViewController" customModule="realmDatabase" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5QE-t3-VDX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3BO-DD-b22">
+                                <rect key="frame" x="5" y="75" width="365" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3BO-DD-b22" firstAttribute="leading" secondItem="SgG-Of-3Tr" secondAttribute="leading" constant="5" id="Yl6-aH-HCE"/>
+                            <constraint firstItem="3BO-DD-b22" firstAttribute="top" secondItem="SgG-Of-3Tr" secondAttribute="top" constant="55" id="ckv-8i-kTU"/>
+                            <constraint firstItem="SgG-Of-3Tr" firstAttribute="trailing" secondItem="3BO-DD-b22" secondAttribute="trailing" constant="5" id="ngs-bG-6oj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SgG-Of-3Tr"/>
+                    </view>
+                    <connections>
+                        <outlet property="photoName" destination="3BO-DD-b22" id="KLj-J4-RGD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tHS-4t-qyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3539" y="126"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ac4-oL-3R2">
