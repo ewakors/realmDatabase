@@ -9,10 +9,11 @@
 import RealmSwift
 
 class Photo: Object {
-    @objc dynamic var ID: String = UUID().uuidString
-    @objc dynamic var image: Data? = nil
+    @objc dynamic var uuid: String = UUID().uuidString
+    @objc dynamic var imageName = ""
+    @objc dynamic var image: Data = Data()
     
     override static func primaryKey() -> String? {
-        return "ID"
+        return "uuid"
     }
 }

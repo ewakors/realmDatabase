@@ -21,6 +21,8 @@
 		942247FD213D61B700298F2D /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942247FC213D61B700298F2D /* Photo.swift */; };
 		942247FF213D61C900298F2D /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942247FE213D61C900298F2D /* PhotosViewController.swift */; };
 		9470C0CD213E7C0900F7B52E /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9470C0CC213E7C0900F7B52E /* Stopwatch.swift */; };
+		9470C0D0213E9E4700F7B52E /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9470C0CE213E9E4700F7B52E /* PhotoTableViewCell.swift */; };
+		9470C0D1213E9E4700F7B52E /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9470C0CF213E9E4700F7B52E /* PhotoTableViewCell.xib */; };
 		B2AD50776A39874088580EF3 /* Pods_realmDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD6B0DE6A5A163046DB21172 /* Pods_realmDatabase.framework */; };
 		EC77BAAEE6DC64DEE2304ADC /* Pods_realmDatabaseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45D44EDA805A2654A4854A99 /* Pods_realmDatabaseUITests.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +70,8 @@
 		942247FC213D61B700298F2D /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		942247FE213D61C900298F2D /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		9470C0CC213E7C0900F7B52E /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
+		9470C0CE213E9E4700F7B52E /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		9470C0CF213E9E4700F7B52E /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
 		994F0E2A2149342843E1DEC4 /* Pods-realmDatabaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realmDatabaseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-realmDatabaseTests/Pods-realmDatabaseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F4B309D6ADC3B20D2A2637BF /* Pods_realmDatabaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_realmDatabaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD6B0DE6A5A163046DB21172 /* Pods_realmDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_realmDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,7 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				9470C0CB213E7BEC00F7B52E /* Timer */,
-				942247FB213D619F00298F2D /* Picture */,
+				942247FB213D619F00298F2D /* Photo */,
 				942247F6213D35D100298F2D /* Item */,
 				942247F3213D350200298F2D /* Constant */,
 				942247BF213D2C9700298F2D /* AppDelegate.swift */,
@@ -188,13 +192,15 @@
 			path = Item;
 			sourceTree = "<group>";
 		};
-		942247FB213D619F00298F2D /* Picture */ = {
+		942247FB213D619F00298F2D /* Photo */ = {
 			isa = PBXGroup;
 			children = (
 				942247FC213D61B700298F2D /* Photo.swift */,
 				942247FE213D61C900298F2D /* PhotosViewController.swift */,
+				9470C0CE213E9E4700F7B52E /* PhotoTableViewCell.swift */,
+				9470C0CF213E9E4700F7B52E /* PhotoTableViewCell.xib */,
 			);
-			path = Picture;
+			path = Photo;
 			sourceTree = "<group>";
 		};
 		9470C0CB213E7BEC00F7B52E /* Timer */ = {
@@ -323,6 +329,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9470C0D1213E9E4700F7B52E /* PhotoTableViewCell.xib in Resources */,
 				942247CA213D2C9800298F2D /* LaunchScreen.storyboard in Resources */,
 				942247C7213D2C9800298F2D /* Assets.xcassets in Resources */,
 				942247C5213D2C9700298F2D /* Main.storyboard in Resources */,
@@ -432,6 +439,7 @@
 				942247F8213D35DE00298F2D /* Item.swift in Sources */,
 				942247C2213D2C9700298F2D /* ViewController.swift in Sources */,
 				942247FF213D61C900298F2D /* PhotosViewController.swift in Sources */,
+				9470C0D0213E9E4700F7B52E /* PhotoTableViewCell.swift in Sources */,
 				942247C0213D2C9700298F2D /* AppDelegate.swift in Sources */,
 				942247F5213D351500298F2D /* Constants.swift in Sources */,
 				9470C0CD213E7C0900F7B52E /* Stopwatch.swift in Sources */,
