@@ -75,7 +75,6 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
             try! self.realm.write {
                 self.realm.add(item)
             }
-            // do something with textField
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alertController.addTextField(configurationHandler: {(textField : UITextField!) -> Void in
@@ -116,16 +115,30 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
                 let editAction = UIAlertAction(title: "Edytuj", style: .default, handler: {
                     (alert: UIAlertAction!) -> Void in
                     
-                    try! self.realm.write {
-                        self.realm.delete(item)
-                    }
+                    let alertController = UIAlertController(title: "Edit Item", message: "", preferredStyle: .alert)
                     
+                    alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: {
+                        alert -> Void in
+                        let textField = alertController.textFields![0] as UITextField
+                        
+                        try! self.realm.write {
+                            item.textString = textField.text ?? ""
+                            print("Edit item \(String(describing: self.s?.elapsedTimeString()))")
+                        }
+                    }))
+                    alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    alertController.addTextField(configurationHandler: {(textField : UITextField!) -> Void in
+                        textField.text = item.textString
+                    })
+                    self.present(alertController, animated: true, completion: nil)
                 })
+                
                 let deleteAction = UIAlertAction(title: "Usuń", style: .default, handler: {
                     (alert: UIAlertAction!) -> Void in
                     
                     try! self.realm.write {
                         self.realm.delete(item)
+                        print("Delete item \(String(describing: self.s?.elapsedTimeString()))")
                     }
                 })
                 
@@ -154,7 +167,7 @@ extension ItemsViewController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items!.count
+        return items!.count 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -170,32 +183,6 @@ extension ItemsViewController {
         try! realm.write {
             realm.delete(item)
         }
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            let alert = UIAlertController(title: "", message: "Edit list item", preferredStyle: .alert)
-            alert.addTextField(configurationHandler: { (textField) in
-//                textField.text = self.list[indexPath.row]
-            })
-            alert.addAction(UIAlertAction(title: "Update", style: .default, handler: { (updateAction) in
-//                self.list[indexPath.row] = alert.textFields!.first!.text!
-                self.tableView.reloadRows(at: [indexPath], with: .fade)
-            }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            self.present(alert, animated: false)
-        })
-        
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
-//            self.list.remove(at: indexPath.row)
-            tableView.reloadData()
-        })
-        
-        return [deleteAction, editAction]
     }
 }
 
