@@ -27,6 +27,9 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
+        self.view.addGestureRecognizer(longPressRecognizer)
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonDidClick))
         navigationItem.rightBarButtonItems = [UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(logoutButtonDidClick)),UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(photoButtonDidClick)) ]
         
@@ -36,11 +39,9 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
             guard let tableView = self?.tableView else { return }
             switch changes {
             case .initial:
-                // Results are now populated and can be accessed without blocking the UI
                 tableView.reloadData()
                 print("Initial database: \(String(describing: self?.s?.elapsedTimeString()))")
             case .update(_, let deletions, let insertions, let modifications):
-                // Query results have changed, so apply them to the UITableView
                 tableView.beginUpdates()
                 tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
                                      with: .automatic)
@@ -50,7 +51,6 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
                                      with: .automatic)
                 tableView.endUpdates()
             case .error(let error):
-                // An error occurred while opening the Realm file on the background worker thread
                 fatalError("fatal error \(error)")
             }
         }
@@ -63,11 +63,7 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
     override func viewWillAppear(_ animated: Bool) {
         print("Items: \(items)")
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     @objc func addButtonDidClick() {
         let alertController = UIAlertController(title: "Add Item", message: "", preferredStyle: .alert)
         
@@ -105,6 +101,46 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        
+        if longPressGestureRecognizer.state == UIGestureRecognizerState.began {
+            
+            let touchPoint = longPressGestureRecognizer.location(in: self.view)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                
+                let item = items![indexPath.row - 1]
+                
+                let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
+                
+                let editAction = UIAlertAction(title: "Edytuj", style: .default, handler: {
+                    (alert: UIAlertAction!) -> Void in
+                    
+                    try! self.realm.write {
+                        self.realm.delete(item)
+                    }
+                    
+                })
+                let deleteAction = UIAlertAction(title: "Usuń", style: .default, handler: {
+                    (alert: UIAlertAction!) -> Void in
+                    
+                    try! self.realm.write {
+                        self.realm.delete(item)
+                    }
+                })
+                
+                let cancelAction = UIAlertAction(title: "Anuluj", style: .cancel, handler: {
+                    (alert: UIAlertAction!) -> Void in
+                })
+                
+                optionMenu.addAction(editAction)
+                optionMenu.addAction(deleteAction)
+                optionMenu.addAction(cancelAction)
+                
+                self.present(optionMenu, animated: true, completion: nil)
+            }
+        }
+    }
 }
 
 extension ItemsViewController {
@@ -130,10 +166,36 @@ extension ItemsViewController {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
-        let item = items![indexPath.row]
+        let item = items![indexPath.row ]
         try! realm.write {
             realm.delete(item)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
+            let alert = UIAlertController(title: "", message: "Edit list item", preferredStyle: .alert)
+            alert.addTextField(configurationHandler: { (textField) in
+//                textField.text = self.list[indexPath.row]
+            })
+            alert.addAction(UIAlertAction(title: "Update", style: .default, handler: { (updateAction) in
+//                self.list[indexPath.row] = alert.textFields!.first!.text!
+                self.tableView.reloadRows(at: [indexPath], with: .fade)
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: false)
+        })
+        
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
+//            self.list.remove(at: indexPath.row)
+            tableView.reloadData()
+        })
+        
+        return [deleteAction, editAction]
     }
 }
 
