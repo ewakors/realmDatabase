@@ -84,52 +84,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Simulator Screen Shot - iPhone 6 - 2018-08-22 at 12.01.22" translatesAutoresizingMaskIntoConstraints="NO" id="76b-GU-4Mh">
+                                <rect key="frame" x="16" y="51" width="343" height="266"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nazwa pliku" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAq-gj-aEQ">
-                                <rect key="frame" x="14" y="81" width="92" height="21"/>
+                                <rect key="frame" x="16" y="348" width="92" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FGW-8Q-52z">
-                                <rect key="frame" x="116" y="77" width="249" height="30"/>
+                                <rect key="frame" x="118" y="344" width="241" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dge-Wh-i4r">
-                                <rect key="frame" x="10" y="124" width="84" height="30"/>
+                                <rect key="frame" x="16" y="391" width="84" height="30"/>
                                 <state key="normal" title="Wybierz plik"/>
                                 <connections>
                                     <action selector="addPhotoButtonClick:" destination="sYx-0y-i4P" eventType="touchUpInside" id="GCo-sP-i2o"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhX-JZ-3G3">
-                                <rect key="frame" x="114" y="129" width="251" height="21"/>
+                                <rect key="frame" x="116" y="396" width="243" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Simulator Screen Shot - iPhone 6 - 2018-08-22 at 12.01.22" translatesAutoresizingMaskIntoConstraints="NO" id="76b-GU-4Mh">
-                                <rect key="frame" x="59" y="245" width="240" height="128"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ZAq-gj-aEQ" firstAttribute="leading" secondItem="EY9-6G-Ww8" secondAttribute="leading" constant="14" id="0PY-aX-rfo"/>
-                            <constraint firstItem="ZAq-gj-aEQ" firstAttribute="top" secondItem="EY9-6G-Ww8" secondAttribute="top" constant="61" id="D98-No-ubB"/>
-                            <constraint firstItem="Dge-Wh-i4r" firstAttribute="leading" secondItem="EY9-6G-Ww8" secondAttribute="leading" constant="10" id="F1V-FG-3H6"/>
-                            <constraint firstItem="yhX-JZ-3G3" firstAttribute="leading" secondItem="Dge-Wh-i4r" secondAttribute="trailing" constant="20" id="Gcb-y5-6s2"/>
-                            <constraint firstItem="76b-GU-4Mh" firstAttribute="top" secondItem="Dge-Wh-i4r" secondAttribute="bottom" constant="91" id="Hft-b4-hVK"/>
-                            <constraint firstItem="76b-GU-4Mh" firstAttribute="leading" secondItem="EY9-6G-Ww8" secondAttribute="leading" constant="59" id="HxM-r8-nJy"/>
-                            <constraint firstItem="yhX-JZ-3G3" firstAttribute="top" secondItem="FGW-8Q-52z" secondAttribute="bottom" constant="22" id="O7d-lK-mIO"/>
-                            <constraint firstItem="EY9-6G-Ww8" firstAttribute="trailing" secondItem="yhX-JZ-3G3" secondAttribute="trailing" constant="10" id="RsH-ko-H8l"/>
-                            <constraint firstItem="FGW-8Q-52z" firstAttribute="top" secondItem="EY9-6G-Ww8" secondAttribute="top" constant="57" id="Z0G-NW-xb6"/>
-                            <constraint firstItem="EY9-6G-Ww8" firstAttribute="bottom" secondItem="76b-GU-4Mh" secondAttribute="bottom" constant="294" id="cMn-p9-pD0"/>
-                            <constraint firstItem="FGW-8Q-52z" firstAttribute="leading" secondItem="ZAq-gj-aEQ" secondAttribute="trailing" constant="10" id="fK4-wv-56W"/>
-                            <constraint firstItem="EY9-6G-Ww8" firstAttribute="trailing" secondItem="76b-GU-4Mh" secondAttribute="trailing" constant="76" id="ofd-mJ-CQg"/>
-                            <constraint firstItem="Dge-Wh-i4r" firstAttribute="top" secondItem="ZAq-gj-aEQ" secondAttribute="bottom" constant="22" id="vyM-f5-00R"/>
-                            <constraint firstItem="EY9-6G-Ww8" firstAttribute="trailing" secondItem="FGW-8Q-52z" secondAttribute="trailing" constant="10" id="wlf-zq-ovH"/>
-                            <constraint firstItem="EY9-6G-Ww8" firstAttribute="bottom" secondItem="Dge-Wh-i4r" secondAttribute="bottom" constant="513" id="yid-CS-MQH"/>
+                            <constraint firstItem="FGW-8Q-52z" firstAttribute="leading" secondItem="ZAq-gj-aEQ" secondAttribute="trailing" constant="10" id="0sm-oB-1s3"/>
+                            <constraint firstItem="76b-GU-4Mh" firstAttribute="top" secondItem="EY9-6G-Ww8" secondAttribute="top" constant="31" id="9t7-J6-GAa"/>
+                            <constraint firstItem="yhX-JZ-3G3" firstAttribute="top" secondItem="FGW-8Q-52z" secondAttribute="bottom" constant="22" id="Gts-Nl-QtT"/>
+                            <constraint firstItem="EY9-6G-Ww8" firstAttribute="trailing" secondItem="yhX-JZ-3G3" secondAttribute="trailing" constant="16" id="Q8L-oZ-iNL"/>
+                            <constraint firstItem="FGW-8Q-52z" firstAttribute="top" secondItem="76b-GU-4Mh" secondAttribute="bottom" constant="27" id="Rvu-es-I2H"/>
+                            <constraint firstItem="76b-GU-4Mh" firstAttribute="leading" secondItem="EY9-6G-Ww8" secondAttribute="leading" constant="16" id="Vh7-51-eMG"/>
+                            <constraint firstItem="EY9-6G-Ww8" firstAttribute="trailing" secondItem="76b-GU-4Mh" secondAttribute="trailing" constant="16" id="fcs-OS-2SN"/>
+                            <constraint firstItem="ZAq-gj-aEQ" firstAttribute="leading" secondItem="EY9-6G-Ww8" secondAttribute="leading" constant="16" id="iUE-Xh-H8d"/>
+                            <constraint firstItem="Dge-Wh-i4r" firstAttribute="top" secondItem="ZAq-gj-aEQ" secondAttribute="bottom" constant="22" id="lOp-Z5-8hr"/>
+                            <constraint firstAttribute="bottom" secondItem="76b-GU-4Mh" secondAttribute="bottom" constant="350" id="n40-oD-JEv"/>
+                            <constraint firstItem="Dge-Wh-i4r" firstAttribute="leading" secondItem="EY9-6G-Ww8" secondAttribute="leading" constant="16" id="pxD-OS-eiC"/>
+                            <constraint firstItem="EY9-6G-Ww8" firstAttribute="trailing" secondItem="FGW-8Q-52z" secondAttribute="trailing" constant="16" id="t4H-Tj-Gbi"/>
+                            <constraint firstItem="yhX-JZ-3G3" firstAttribute="leading" secondItem="Dge-Wh-i4r" secondAttribute="trailing" constant="16" id="vz9-Cc-zMR"/>
+                            <constraint firstItem="ZAq-gj-aEQ" firstAttribute="top" secondItem="76b-GU-4Mh" secondAttribute="bottom" constant="31" id="ymg-be-rQr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EY9-6G-Ww8"/>
                     </view>
@@ -142,7 +141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QXN-fX-ic5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4194" y="122"/>
+            <point key="canvasLocation" x="4192.8000000000002" y="121.88905547226388"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ac4-oL-3R2">

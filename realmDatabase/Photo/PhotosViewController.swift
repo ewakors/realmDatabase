@@ -87,14 +87,7 @@ extension PhotosViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return photos!.count
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let photo = photos[indexPath.row]
-//        try! realm.write {
-//
-//        }
-//    }
-    
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         let item = photos![indexPath.row]
