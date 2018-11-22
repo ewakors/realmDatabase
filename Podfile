@@ -1,20 +1,13 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '8.2'
+
+use_frameworks!
+inhibit_all_warnings!
+
+def pods
+    pod 'RealmSwift'
+    pod 'R.swift', '5.0.0.alpha.2'
+end
 
 target 'realmDatabase' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-
-  	pod 'RealmSwift'
-
-  target 'realmDatabaseTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'realmDatabaseUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
+    pods
 end
