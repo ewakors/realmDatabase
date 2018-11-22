@@ -112,7 +112,7 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
         cell.selectionStyle = .none
         let item = items[indexPath.row]
         cell.textLabel?.text = item.textString
-        cell.accessoryType = item.isDone ? UITableViewCellAccessoryType.checkmark : UITableViewCellAccessoryType.none
+        cell.accessoryType = item.isDone ? UITableViewCell.AccessoryType.checkmark : UITableViewCell.AccessoryType.none
         return cell
     }
     
@@ -127,7 +127,7 @@ class ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDa
         }
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         let item = items[indexPath.row]
         try! realm.write {
