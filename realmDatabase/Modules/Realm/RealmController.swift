@@ -16,8 +16,14 @@ class RealmController: UIViewController, Controller {
         super.viewDidLoad()
 
         title = "Realm view"
-        // Do any additional setup after loading the view.
+        
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.backBarButtonItem = UIBarButtonItem(barButtonSystemItem:.undo, target: self, action: #selector(backTouch))
+        presenter.viewWillApear()
+    }
 
+    @objc func backTouch(_ sender: UIBarButtonItem) {
+    }
 }

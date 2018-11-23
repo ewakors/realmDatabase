@@ -16,16 +16,16 @@ extension Builder where Self: BaseBuilder {
     func build() -> ControllerType {
         let controller = self.controller()
         let presenter = self.presenter()
-//        let interactor = self.interactor(repositories: repositories)
-//        let router = self.router(repositories: repositories)
+        let interactor = self.interactor()
+        let router = self.router()
         
-//        presenter.interactor = interactor
-//        presenter.router = router
+        presenter.interactor = interactor
+        presenter.router = router
         presenter.controller = controller as? ControllerType.PresenterType.ControllerType
         
-//        interactor.presenter = presenter as? ControllerType.PresenterType.InteractorType.PresenterType
+        interactor.presenter = presenter as? ControllerType.PresenterType.InteractorType.PresenterType
         
-//        router.controller = controller as? ControllerType.PresenterType.RouterType.ControllerType
+        router.controller = controller as? ControllerType.PresenterType.RouterType.ControllerType
         
         controller.presenter = presenter
         

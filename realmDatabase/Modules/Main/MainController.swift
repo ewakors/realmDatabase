@@ -13,7 +13,16 @@ final class MainController: UIViewController, Controller {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        presenter.viewDidAppear()
+
+    }
+    
+    @IBOutlet weak var realmButton: UIButton! {
+        didSet {
+            realmButton.titleLabel?.text = R.string.localizable.realm()
+        }
+    }
+    
+     @IBAction func realmButtonTouch(_ sender: UIButton) {
+        presenter.didTouchRealm()
     }
 }

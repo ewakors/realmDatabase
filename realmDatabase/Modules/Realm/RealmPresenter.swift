@@ -12,4 +12,8 @@ final class RealmPresenter: Presenter {
     var router: MainRouter!
     var interactor: MainInteractor!
     weak var controller: MainController?
+    
+    func viewWillApear() {
+        
+    }
 }

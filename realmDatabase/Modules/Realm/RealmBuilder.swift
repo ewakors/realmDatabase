@@ -9,10 +9,29 @@
 import UIKit
 
 final class RealmBuilder: BaseBuilder {
-
+    private let window: UIWindow
+    
+    init(window: UIWindow) {
+        self.window = window
+        super.init()
+    }
+    
+    func buildWithNav() -> UINavigationController {
+        let viewController = build()
+        return UINavigationController(rootViewController: viewController)
+    }
 }
 
 extension RealmBuilder: Builder {
+    func router() -> MainRouter {
+        return MainRouter(window: window)
+    }
+    
+    func interactor() -> MainInteractor {
+        return MainInteractor()
+    }
+    
+
     func controller() -> RealmController {
         return R.storyboard.realm.instantiateInitialViewController()!
     }

@@ -13,7 +13,11 @@ final class MainPresenter: Presenter {
     var interactor: MainInteractor!
     weak var controller: MainController?
 
-    func viewDidAppear() {
-        router.shouldNavigateToApp()
+    func didTouchRealm() {
+        router.toRealm()
+    }
+    
+    func didTouchSQLite() {
+        router.toSQLite()
     }
 }

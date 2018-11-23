@@ -6,6 +6,8 @@ inhibit_all_warnings!
 def pods
     pod 'RealmSwift'
     pod 'R.swift', '5.0.0.alpha.2'
+    pod 'SharkORM'
+    pod 'SwiftyJSON'
 end
 
 target 'realmDatabase' do
