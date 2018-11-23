@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+final class SQLitePresenter: Presenter {
+    var router: SQLiteRouter!
+    var interactor: SQLiteInteractor!
+    weak var controller: SQLiteController?
+    
+   
+}

@@ -7,3 +7,8 @@
 //
 
 import Foundation
+import UIKit
+
+final class SQLiteRouter: BaseRouter, Router {
+    weak var controller: SQLiteController?
+}

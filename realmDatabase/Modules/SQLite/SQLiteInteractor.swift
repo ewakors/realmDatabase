@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+final class SQLiteInteractor: BaseInteractor, Interactor {
+    weak var presenter: SQLitePresenter?
+    
+}

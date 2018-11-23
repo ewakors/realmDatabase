@@ -7,3 +7,25 @@
 //
 
 import Foundation
+
+final class SQLiteBuilder: BaseBuilder {
+    
+}
+
+extension SQLiteBuilder: Builder {
+    func controller() -> SQLiteController {
+        return R.storyboard.sqLite.instantiateInitialViewController()!
+    }
+    
+    func presenter() -> SQLitePresenter {
+        return SQLitePresenter()
+    }
+    
+    func router() -> SQLiteRouter {
+        return SQLiteRouter()
+    }
+    
+    func interactor() -> SQLiteInteractor {
+        return SQLiteInteractor()
+    }
+}
